@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Список книг</h1>
+    </header>
+
+    <a class="back-button" href="/">Назад</a>
+
+    <form style="margin: 20px 0;" action="/books/add" method="get">
+        <input type="submit" class="btn btn-sm btn-danger" value="Добавить книгу"></input>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Количество</th>
+                <th>Кнопки</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let index=0; index < books.length; index++) { %>
+                <tr>
+                    <td>
+                        <%= books[index].booksName %>
+                    </td>
+                    <td>
+                        <%= books[index].booksAuthor %>
+                    </td>
+                    <td>
+                        <%= books[index].booksCount %>
+                    </td>
+                    <td class="table-form-buttons">
+                        <form action="/books/delete/<%= books[index].booksId %>" method="post">
+                            <input type="submit" class="delete-button" value="Удалить"></input>
+                            <input type="hidden" name="" value="<%=books[index].booksId%>">
+                        </form>
+                        <a class="edit-button" href="/books/<%= books[index].booksId %>/edit">Изменить</a>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>

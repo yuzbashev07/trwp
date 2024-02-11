@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1 id="header">
+            <% if (books[0] !=null) { %>
+                <%= books[0].readersName %>
+        </h1>
+    </header>
+    <div class="root-content">
+        <a class="back-button" href="/users">Назад</a>
+        <div class="book-list">
+            <% for (let index=0; index < books.length; index++) { %>
+                <li>
+                    <%= books[index].booksName %>
+                </li>
+                <% } %>
+        </div>
+    </div>
+    <% } %>
+        <% if (books[0]==null) { %>
+            <h1>Читатель не взял ни одной книги</h1>
+            <a class="back-button" href="/users">Назад</a>
+            <% } %>
+</body>
+
+</html>

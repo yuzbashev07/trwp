@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Данные книги</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <% if (typeof editBook !="undefined" ) { %>
+        <header>
+            <h1 style="margin: 20px; text-align: center;">Изменить данные книги</h1>
+        </header>
+
+        <div class="root-content">
+            <div class="form-div">
+                <form action="/books/<%= editBook[0].booksId %>/edit" method="post">
+                    <div class="form-inputs">
+                        <input type="text" name="bookName" placeholder="Название книги"
+                            value="<%= editBook[0].booksName %>">
+                        <input type="text" name="bookAuthor" placeholder="Автор книги"
+                            value="<%= editBook[0].booksAuthor %>">
+                        <input type="text" name="bookCount" placeholder="Количество копий"
+                            value="<%= editBook[0].booksCount %>">
+                    </div>
+                    <div class="form-submit-buttons">
+                        <input type="submit" value="Подтвердить" class="" />
+                        <a class="back-button" href="/books">Назад</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <% } else { %>
+            <header>
+                <h1 style="margin: 20px; text-align: center;">Добавить книгу</h1>
+            </header>
+
+            <div class="root-content">
+                <div class="form-div">
+                    <form action="/books/add" method="post">
+                        <div class="form-inputs">
+                            <input type="text" name="bookName" placeholder="Название книги">
+                            <input type="text" name="bookAuthor" placeholder="Автор книги">
+                            <input type="text" name="bookCount" placeholder="Количество копий">
+                        </div>
+                        <div class="form-submit-buttons">
+                            <input type="submit" value="Подтвердить" class="confirm-button" />
+                            <a class="back-button" href="/books">Назад</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+</body>
+</div>
+
+
+</html>
